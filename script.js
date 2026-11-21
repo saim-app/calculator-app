@@ -203,3 +203,20 @@ if (savedTheme === "light") {
     themeToggle.textContent = "🌙 Dark Mode";
 }
 showHistory();
+// Copy Calculator Result
+const copyButton = document.getElementById("copyResult");
+
+copyButton.addEventListener("click", async function () {
+    const result = document.getElementById("display").value;
+
+    try {
+        await navigator.clipboard.writeText(result);
+        copyButton.textContent = "✅ Copied!";
+    } catch (error) {
+        copyButton.textContent = "❌ Copy Failed";
+    }
+
+    setTimeout(function () {
+        copyButton.textContent = "📋 Copy Result";
+    }, 2000);
+});
