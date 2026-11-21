@@ -177,6 +177,27 @@ function calculateFactorial() {
   replaceCurrentNumber(result);
 }
 
+// Standard and Scientific Mode Switch
+
+const standardModeButton = document.getElementById("standardMode");
+const scientificModeButton = document.getElementById("scientificMode");
+
+const standardPanel = document.getElementById("standardPanel");
+const scientificPanel = document.getElementById("scientificPanel");
+
+standardPanel.style.display = "grid";
+scientificPanel.style.display = "none";
+scientificPanel.hidden = false;
+
+standardModeButton.addEventListener("click", function() {
+  standardPanel.style.display = "grid";
+  scientificPanel.style.display = "none";
+});
+
+scientificModeButton.addEventListener("click", function() {
+  standardPanel.style.display = "none";
+  scientificPanel.style.display = "grid";
+});
 buttons.addEventListener("click", function(event) {
   const button = event.target.closest("button");
   if (!button) return;
