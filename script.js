@@ -134,6 +134,48 @@ function toggleSign() {
 
   replaceCurrentNumber(-number);
 }
+// Scientific Calculator Functions
+
+function applyScientificFunction(fn) {
+  const number = getCurrentNumber();
+  if (number === null) return;
+
+  const result = fn(number);
+
+  if (!Number.isFinite(result)) {
+    display.value = "Error";
+    return;
+  }
+
+  replaceCurrentNumber(Number(result.toPrecision(12)));
+}
+
+function insertPi() {
+  const pi = String(Math.PI);
+
+  if (display.value === "0" || display.value === "Error" || display.value === "") {
+    display.value = pi;
+  } else {
+    display.value += pi;
+  }
+}
+
+function calculateFactorial() {
+  const number = getCurrentNumber();
+
+  if (number === null || number < 0 || !Number.isInteger(number) || number > 170) {
+    display.value = "Error";
+    return;
+  }
+
+  let result = 1;
+
+  for (let i = 2; i <= number; i++) {
+    result *= i;
+  }
+
+  replaceCurrentNumber(result);
+}
 
 buttons.addEventListener("click", function(event) {
   const button = event.target.closest("button");
@@ -148,8 +190,6 @@ buttons.addEventListener("click", function(event) {
   }
 
   switch (action) {
-      toggleSign();
-break;
     case "clear":
       clearDisplay();
       break;
@@ -170,6 +210,30 @@ break;
       break;
     case "sign":
       toggleSign();
+      break;
+          case "sin":
+  applyScientificFunction(n => Math.sin(n * Math.PI / 180));
+  break;
+case "cos":
+  applyScientificFunction(n => Math.cos(n * Math.PI / 180));
+  break;
+case "tan":
+  applyScientificFunction(n => Math.tan(n * Math.PI / 180));
+  break;
+    case "log":
+      applyScientificFunction(Math.log10);
+      break;
+    case "ln":
+      applyScientificFunction(Math.log);
+      break;
+    case "pi":
+      insertPi();
+      break;
+    case "power":
+      appendValue("**");
+      break;
+    case "factorial":
+      calculateFactorial();
       break;
   }
 });
