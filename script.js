@@ -250,6 +250,9 @@ buttons.addEventListener("click", function(event) {
   }
 
   switch (action) {
+      case "answer":
+  display.value = lastAnswer;
+  break;
     case "clear":
       clearDisplay();
       break;
