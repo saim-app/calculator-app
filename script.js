@@ -189,6 +189,7 @@ themeToggle.addEventListener("click", function () {
 
     if (document.body.classList.contains("light-mode")) {
         themeToggle.textContent = "🌙 Dark Mode";
+      localStorage.setItem("calculatorTheme", "light");
     } else {
         themeToggle.textContent = "☀️ Light Mode";
     }
