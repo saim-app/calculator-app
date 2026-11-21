@@ -135,6 +135,16 @@ function toggleSign() {
   replaceCurrentNumber(-number);
 }
 // Scientific Calculator Functions
+// DEG / RAD Mode
+
+let angleMode = "DEG";
+
+const angleModeButton = document.getElementById("angleMode");
+
+angleModeButton.addEventListener("click", function() {
+  angleMode = angleMode === "DEG" ? "RAD" : "DEG";
+  angleModeButton.textContent = angleMode;
+});
 
 function applyScientificFunction(fn) {
   const number = getCurrentNumber();
@@ -233,13 +243,21 @@ buttons.addEventListener("click", function(event) {
       toggleSign();
       break;
           case "sin":
-  applyScientificFunction(n => Math.sin(n * Math.PI / 180));
+  applyScientificFunction(n =>
+    Math.sin(angleMode === "DEG" ? n * Math.PI / 180 : n)
+  );
   break;
+
 case "cos":
-  applyScientificFunction(n => Math.cos(n * Math.PI / 180));
+  applyScientificFunction(n =>
+    Math.cos(angleMode === "DEG" ? n * Math.PI / 180 : n)
+  );
   break;
+
 case "tan":
-  applyScientificFunction(n => Math.tan(n * Math.PI / 180));
+  applyScientificFunction(n =>
+    Math.tan(angleMode === "DEG" ? n * Math.PI / 180 : n)
+  );
   break;
     case "log":
       applyScientificFunction(Math.log10);
