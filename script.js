@@ -373,22 +373,3 @@ exportHistoryButton.addEventListener("click", function() {
 
   URL.revokeObjectURL(link.href);
 });
-/* Memory Buttons */
-
-.memory-buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.memory-buttons button {
-  padding: 12px 5px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #654ce5, #4831b9);
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
