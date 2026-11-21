@@ -193,4 +193,11 @@ themeToggle.addEventListener("click", function () {
         themeToggle.textContent = "☀️ Light Mode";
     }
 });
+// Save Theme Preference
+const savedTheme = localStorage.getItem("calculatorTheme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.textContent = "🌙 Dark Mode";
+}
 showHistory();
