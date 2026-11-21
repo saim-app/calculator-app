@@ -134,6 +134,32 @@ function toggleSign() {
 
   replaceCurrentNumber(-number);
 }
+// Memory Calculator
+
+let memoryValue = 0;
+
+const memoryAddButton = document.getElementById("memoryAdd");
+const memorySubtractButton = document.getElementById("memorySubtract");
+const memoryRecallButton = document.getElementById("memoryRecall");
+const memoryClearButton = document.getElementById("memoryClear");
+
+memoryAddButton.addEventListener("click", function() {
+  const number = getCurrentNumber();
+  if (number !== null) memoryValue += number;
+});
+
+memorySubtractButton.addEventListener("click", function() {
+  const number = getCurrentNumber();
+  if (number !== null) memoryValue -= number;
+});
+
+memoryRecallButton.addEventListener("click", function() {
+  replaceCurrentNumber(memoryValue);
+});
+
+memoryClearButton.addEventListener("click", function() {
+  memoryValue = 0;
+});
 // Scientific Calculator Functions
 // DEG / RAD Mode
 
