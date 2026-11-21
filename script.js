@@ -82,6 +82,8 @@ function addToHistory(expression, result) {
   showHistory();
 }
 
+// Previous Answer
+let lastAnswer = "0";
 function calculate() {
   try {
     const expression = display.value;
