@@ -154,7 +154,7 @@ memorySubtractButton.addEventListener("click", function() {
 });
 
 memoryRecallButton.addEventListener("click", function() {
-  replaceCurrentNumber(memoryValue);
+  display.value = String(memoryValue);
 });
 
 memoryClearButton.addEventListener("click", function() {
