@@ -18,7 +18,7 @@ function deleteLast() {
 }
 
 function evaluateExpression(expression) {
-  if (!/^[0-9+\-*/.%() ]+$/.test(expression)) {
+  if (!/^[0-9+\-*/.%() ]+$/.test(expression.replace(/\*\*/g, ""))) {
     throw new Error("Invalid input");
   }
 
