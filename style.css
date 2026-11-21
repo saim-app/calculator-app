@@ -206,3 +206,11 @@ body.light-mode .calculator {
     background: #ffffff;
     color: #1e293b;
 }
+#display {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: clamp(18px, 5vw, 32px);
+    white-space: nowrap;
+    overflow-x: auto;
+    text-align: right;
+}
