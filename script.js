@@ -251,3 +251,20 @@ soundToggle.addEventListener("click", function() {
     ? "🔊 Sound On"
     : "🔇 Sound Off";
 });
+// Export Calculation History
+const exportHistoryButton = document.getElementById("exportHistory");
+
+exportHistoryButton.addEventListener("click", function() {
+  const historyText = calculationHistory.join("\n");
+
+  const file = new Blob([historyText], {
+    type: "text/plain"
+  });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(file);
+  link.download = "Calculator-History.txt";
+  link.click();
+
+  URL.revokeObjectURL(link.href);
+});
