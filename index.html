@@ -19,7 +19,12 @@
   📋 Copy Result
 </button>
 
+  <div class="mode-switch">
+  <button id="standardMode" type="button">Standard</button>
+  <button id="scientificMode" type="button">Scientific</button>
+</div> 
     <div class="buttons">
+      <div id="scientificPanel" class="calculator-panel" hidden>
       <button class="utility" data-action="sin">sin</button>
 <button class="utility" data-action="cos">cos</button>
 <button class="utility" data-action="tan">tan</button>
@@ -28,7 +33,9 @@
 <button class="utility" data-action="pi">π</button>
 <button class="utility" data-action="power">xʸ</button>
       <button class="utility" data-action="factorial">!</button>
+        </div>
 
+      <div id="standardPanel" class="calculator-panel">
       <button class="utility" data-action="clear">AC</button>
       <button class="utility" data-action="delete">DEL</button>
       <button class="utility" data-value="(">(</button>
@@ -60,7 +67,7 @@
       <button class="operator" data-value="+">+</button>
 
       <button class="equals" data-action="calculate">=</button>
-
+</div>
     </div>
     <section class="history">
   <h3>Calculation History</h3>
