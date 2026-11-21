@@ -195,3 +195,14 @@ body {
   font-size: 15px;
   overflow-wrap: anywhere;
 }
+
+/* Dark / Light Mode */
+body.light-mode {
+    background: #f4f6fb;
+    color: #1e293b;
+}
+
+body.light-mode .calculator {
+    background: #ffffff;
+    color: #1e293b;
+}
