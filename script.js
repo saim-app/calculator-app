@@ -1,30 +1,20 @@
 
 const display = document.getElementById("display");
 const buttons = document.querySelector(".buttons");
+const historyList = document.getElementById("historyList");
+const clearHistoryButton = document.getElementById("clearHistory");
 
 function appendValue(value) {
-  if (display.value === "Error") {
-    display.value = "0";
-  }
-
-  if (display.value === "0" && value !== "." &&
-      !["+", "-", "*", "/", "%", ")"].includes(value)) {
-    display.value = value;
-  } else {
-    display.value += value;
-  }
+  if (display.value === "Error") display.value = "";
+  display.value += value;
 }
 
 function clearDisplay() {
-  display.value = "0";
+  display.value = "";
 }
 
 function deleteLast() {
   display.value = display.value.slice(0, -1);
-
-  if (display.value === "" || display.value === "Error") {
-    display.value = "0";
-  }
 }
 
 function evaluateExpression(expression) {
@@ -48,66 +38,98 @@ function evaluateExpression(expression) {
   return result;
 }
 
+// Calculation History
+let calculationHistory = [];
+
+try {
+  calculationHistory = JSON.parse(
+    localStorage.getItem("calculatorHistory")
+  ) || [];
+} catch {
+  calculationHistory = [];
+}
+
+function saveHistory() {
+  localStorage.setItem(
+    "calculatorHistory",
+    JSON.stringify(calculationHistory)
+  );
+}
+
+function showHistory() {
+  historyList.innerHTML = "";
+
+  calculationHistory.forEach(function(item) {
+    const li = document.createElement("li");
+    li.textContent = item;
+    historyList.appendChild(li);
+  });
+}
+
+function addToHistory(expression, result) {
+  calculationHistory.unshift(expression + " = " + result);
+
+  calculationHistory = calculationHistory.slice(0, 30);
+
+  saveHistory();
+  showHistory();
+}
+
 function calculate() {
   try {
-    const result = evaluateExpression(display.value);
-    display.value = String(Number(result.toPrecision(12)));
+    const expression = display.value;
+    const result = evaluateExpression(expression);
+    const answer = String(Number(result.toPrecision(12)));
+
+    display.value = answer;
+    addToHistory(expression, answer);
   } catch {
     display.value = "Error";
   }
 }
 
 function getCurrentNumber() {
-  const value = evaluateExpression(display.value);
-  return value;
+  const match = display.value.match(/-?\d*\.?\d+$/);
+  return match ? Number(match[0]) : null;
+}
+
+function replaceCurrentNumber(number) {
+  display.value = display.value.replace(
+    /-?\d*\.?\d+$/,
+    String(number)
+  );
 }
 
 function squareRoot() {
-  try {
-    const value = getCurrentNumber();
+  const number = getCurrentNumber();
+  if (number === null || number < 0) return;
 
-    if (value < 0) throw new Error();
-
-    display.value = String(Math.sqrt(value));
-  } catch {
-    display.value = "Error";
-  }
+  replaceCurrentNumber(Math.sqrt(number));
 }
 
 function squareNumber() {
-  try {
-    const value = getCurrentNumber();
-    display.value = String(value * value);
-  } catch {
-    display.value = "Error";
-  }
+  const number = getCurrentNumber();
+  if (number === null) return;
+
+  replaceCurrentNumber(number * number);
 }
 
 function reciprocal() {
-  try {
-    const value = getCurrentNumber();
+  const number = getCurrentNumber();
+  if (number === null || number === 0) return;
 
-    if (value === 0) throw new Error();
-
-    display.value = String(1 / value);
-  } catch {
-    display.value = "Error";
-  }
+  replaceCurrentNumber(1 / number);
 }
 
 function toggleSign() {
-  try {
-    let value = getCurrentNumber();
+  const number = getCurrentNumber();
+  if (number === null) return;
 
-    display.value = String(value * -1);
-  } catch {
-    display.value = "Error";
-  }
+  replaceCurrentNumber(-number);
 }
 
 buttons.addEventListener("click", function(event) {
   const button = event.target.closest("button");
-
   if (!button) return;
 
   const value = button.dataset.value;
@@ -122,43 +144,42 @@ buttons.addEventListener("click", function(event) {
     case "clear":
       clearDisplay();
       break;
-
     case "delete":
       deleteLast();
       break;
-
     case "calculate":
       calculate();
       break;
-
     case "sqrt":
       squareRoot();
       break;
-
     case "square":
       squareNumber();
       break;
-
     case "reciprocal":
       reciprocal();
       break;
-
     case "sign":
       toggleSign();
       break;
   }
 });
 
-document.addEventListener("keydown", function(event) {
-  const key = event.key;
+clearHistoryButton.addEventListener("click", function() {
+  calculationHistory = [];
+  saveHistory();
+  showHistory();
+});
 
-  if (/^[0-9.+\-*/()%]$/.test(key)) {
-    appendValue(key);
-  } else if (key === "Enter" || key === "=") {
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.key === "=") {
+    event.preventDefault();
     calculate();
-  } else if (key === "Backspace") {
-    deleteLast();
-  } else if (key === "Escape") {
+  } else if (event.key === "Escape") {
     clearDisplay();
+  } else if (event.key === "Backspace") {
+    deleteLast();
   }
 });
+
+showHistory();
