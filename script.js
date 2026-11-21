@@ -239,3 +239,15 @@ buttons.addEventListener("click", function(event) {
   buttonSound.currentTime = 0;
   buttonSound.play().catch(() => {});
 });
+// Sound On / Off Toggle
+const soundToggle = document.getElementById("soundToggle");
+let soundEnabled = true;
+
+soundToggle.addEventListener("click", function() {
+  soundEnabled = !soundEnabled;
+  buttonSound.muted = !soundEnabled;
+
+  soundToggle.textContent = soundEnabled
+    ? "🔊 Sound On"
+    : "🔇 Sound Off";
+});
