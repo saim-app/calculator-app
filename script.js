@@ -192,6 +192,7 @@ themeToggle.addEventListener("click", function () {
       localStorage.setItem("calculatorTheme", "light");
     } else {
         themeToggle.textContent = "☀️ Light Mode";
+      localStorage.setItem("calculatorTheme", "dark");
     }
 });
 // Save Theme Preference
