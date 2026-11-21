@@ -214,3 +214,35 @@ body.light-mode .calculator {
     overflow-x: auto;
     text-align: right;
 }
+/* Standard and Scientific Panels */
+
+.calculator-panel {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mode-switch {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mode-switch button {
+  flex: 1;
+  padding: 12px 5px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #654ce5, #4831b9);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .calculator-panel {
+    gap: 9px;
+  }
+}
