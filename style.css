@@ -1,8 +1,8 @@
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -12,119 +12,90 @@ body {
   align-items: center;
   padding: 20px;
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #080d20, #17133b, #071a35);
+  background: radial-gradient(circle at top left, #243b70, transparent 45%),
+    linear-gradient(135deg, #080d1b, #111a32, #080d1b);
+  color: white;
 }
 
 .calculator {
   width: 100%;
-  max-width: 360px;
-  padding: 25px 20px;
-  border-radius: 28px;
-  background: linear-gradient(145deg, #182344, #10172e);
+  max-width: 380px;
+  padding: 25px;
   border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 20px 55px rgba(0,0,0,0.55);
+  border-radius: 28px;
+  background: rgba(19,29,54,0.95);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.55);
 }
 
 .calculator h2 {
-  color: #ffffff;
   text-align: center;
-  font-size: 25px;
+  font-size: 23px;
+  letter-spacing: 2px;
   margin-bottom: 22px;
-  letter-spacing: 1px;
+  color: #dce7ff;
 }
 
 #display {
   width: 100%;
-  height: 75px;
+  height: 90px;
   margin-bottom: 22px;
   padding: 15px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  outline: none;
-  background: #080f23;
-  color: #ffffff;
-  font-size: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  background: #080f20;
+  color: white;
   text-align: right;
-  box-shadow: inset 0 4px 12px rgba(0,0,0,0.35);
+  font-size: 32px;
+  font-weight: bold;
 }
 
 .buttons {
   display: grid;
   direction: ltr;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
 }
 
-/* Calculator button positions */
-
-.buttons button:nth-child(1) { grid-area: 1 / 1; }
-.buttons button:nth-child(2) { grid-area: 1 / 2; }
-.buttons button:nth-child(5) { grid-area: 1 / 3; }
-.buttons button:nth-child(3) { grid-area: 1 / 4; }
-
-.buttons button:nth-child(8) { grid-area: 2 / 1; }
-.buttons button:nth-child(9) { grid-area: 2 / 2; }
-.buttons button:nth-child(10) { grid-area: 2 / 3; }
-.buttons button:nth-child(4) { grid-area: 2 / 4; }
-
-.buttons button:nth-child(12) { grid-area: 3 / 1; }
-.buttons button:nth-child(13) { grid-area: 3 / 2; }
-.buttons button:nth-child(14) { grid-area: 3 / 3; }
-.buttons button:nth-child(11) { grid-area: 3 / 4; }
-
-.buttons button:nth-child(16) { grid-area: 4 / 1; }
-.buttons button:nth-child(17) { grid-area: 4 / 2; }
-.buttons button:nth-child(18) { grid-area: 4 / 3; }
-.buttons button:nth-child(15) { grid-area: 4 / 4; }
-
-.buttons button:nth-child(6) { grid-area: 5 / 1; }
-.buttons button:nth-child(7) { grid-area: 5 / 2; }
-.buttons button:nth-child(20) { grid-area: 5 / 3; }
-.buttons button:nth-child(21) { grid-area: 5 / 4; }
-
-.buttons button:nth-child(19) {
-  grid-area: 6 / 1 / 6 / 5;
-  background: linear-gradient(135deg, #7c3aed, #2563eb);
-  color: white;
-}
-
 .buttons button {
-  height: 58px;
-  border: none;
+  min-width: 0;
+  height: 62px;
+  border: 1px solid rgba(255,255,255,0.07);
   border-radius: 16px;
-  background: #263455;
-  color: #ffffff;
+  background: linear-gradient(145deg, #263858, #192844);
+  color: white;
   font-size: 21px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 5px 12px rgba(0,0,0,0.25);
-  transition: 0.2s;
 }
 
 .buttons button:active {
   transform: scale(0.94);
 }
 
+.buttons .utility {
+  background: linear-gradient(145deg, #485b7b, #344562);
+  color: #dce8ff;
+}
+
 .buttons button:nth-child(1),
 .buttons button:nth-child(2) {
-  background: #a83255;
+  background: linear-gradient(145deg, #d94b91, #a83268);
+}
+
+.buttons .operator {
+  background: linear-gradient(145deg, #654ce5, #4831b9);
+}
+
+.buttons .equals {
+  grid-column: 1 / -1;
+  background: linear-gradient(145deg, #12b8c9, #087fbb);
   color: white;
 }
 
-.buttons button:nth-child(3),
-.buttons button:nth-child(4),
-.buttons button:nth-child(5),
-.buttons button:nth-child(6),
-.buttons button:nth-child(7),
-.buttons button:nth-child(11),
-.buttons button:nth-child(15) {
-  background: #34316a;
-  color: #b9b8ff;
-}
-
-@media (max-width: 380px) {
+@media (max-width: 420px) {
   .calculator {
-    padding: 20px 15px;
+    padding: 19px;
   }
 
   .buttons {
@@ -132,6 +103,6 @@ body {
   }
 
   .buttons button {
-    height: 54px;
+    height: 58px;
   }
 }
