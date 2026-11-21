@@ -91,6 +91,7 @@ function calculate() {
     const answer = String(Number(result.toPrecision(12)));
 
     display.value = answer;
+    lastAnswer = answer;
     addToHistory(expression, answer);
   } catch {
     display.value = "Error";
