@@ -148,6 +148,8 @@ buttons.addEventListener("click", function(event) {
   }
 
   switch (action) {
+      toggleSign();
+break;
     case "clear":
       clearDisplay();
       break;
