@@ -62,6 +62,13 @@ function showHistory() {
   calculationHistory.forEach(function(item) {
     const li = document.createElement("li");
     li.textContent = item;
+    li.style.cursor = "pointer";
+
+    li.addEventListener("click", function() {
+      const result = item.split(" = ").pop();
+      display.value = result;
+    });
+
     historyList.appendChild(li);
   });
 }
