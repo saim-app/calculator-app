@@ -227,3 +227,15 @@ copyButton.addEventListener("click", async function () {
         copyButton.textContent = "📋 Copy Result";
     }, 2000);
 });
+// Button Sound Feedback
+const buttonSound = new Audio(
+  "https://actions.google.com/sounds/v1/cartoon/pop.ogg"
+);
+
+buttons.addEventListener("click", function(event) {
+  const button = event.target.closest("button");
+  if (!button) return;
+
+  buttonSound.currentTime = 0;
+  buttonSound.play().catch(() => {});
+});
