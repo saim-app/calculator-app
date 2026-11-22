@@ -765,3 +765,33 @@ async function convertCurrency() {
         rateBox.innerText = "Please check your internet and try again.";
     }
 }
+
+// Area Converter
+function convertArea() {
+    const amount = parseFloat(document.getElementById("areaInput").value);
+    const from = document.getElementById("areaFrom").value;
+    const to = document.getElementById("areaTo").value;
+
+    const resultBox = document.getElementById("areaResult");
+
+    if (isNaN(amount) || amount < 0) {
+        resultBox.innerText = "Please enter a valid area";
+        return;
+    }
+
+    const units = {
+        sqm: 1,
+        sqkm: 1000000,
+        sqft: 0.09290304,
+        sqin: 0.00064516,
+        acre: 4046.8564224,
+        hectare: 10000
+    };
+
+    const result = amount * units[from] / units[to];
+
+    resultBox.innerText =
+        `Result: ${result.toLocaleString("en-US", {
+            maximumFractionDigits: 6
+        })} ${to}`;
+}
