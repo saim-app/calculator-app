@@ -436,3 +436,33 @@ calculatePercentage.addEventListener("click", function() {
 
   percentageResult.textContent = "Result: " + Number(result.toFixed(8));
 });
+// Discount Calculator
+
+const originalPrice = document.getElementById("originalPrice");
+const discountPercent = document.getElementById("discountPercent");
+const calculateDiscount = document.getElementById("calculateDiscount");
+const discountAmount = document.getElementById("discountAmount");
+const finalPrice = document.getElementById("finalPrice");
+
+calculateDiscount.addEventListener("click", function() {
+  const price = Number(originalPrice.value);
+  const discount = Number(discountPercent.value);
+
+  if (originalPrice.value === "" || discountPercent.value === "") {
+    discountAmount.textContent = "Please enter both values";
+    finalPrice.textContent = "";
+    return;
+  }
+
+  if (price < 0 || discount < 0 || discount > 100) {
+    discountAmount.textContent = "Enter valid values (0–100% discount)";
+    finalPrice.textContent = "";
+    return;
+  }
+
+  const saved = (price * discount) / 100;
+  const total = price - saved;
+
+  discountAmount.textContent = "Discount: " + Number(saved.toFixed(2));
+  finalPrice.textContent = "Final Price: " + Number(total.toFixed(2));
+});
