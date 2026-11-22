@@ -190,6 +190,13 @@
 
   <p id="temperatureResult">Result: --</p>
 </div>
+    <!-- Length Converter Link -->
+<div class="percentage-calculator">
+    <h3>Length Converter</h3>
+    <button type="button" onclick="window.location.href='length.html'">
+        Open Length Converter
+    </button>
+</div>
     <section class="history">
   <h3>Calculation History</h3>
   <button id="clearHistory" type="button">Clear History</button>
@@ -207,35 +214,5 @@
 </button>
 
   <script src="script.js"></script>
-  <!-- Length Converter -->
-<div class="converter-box">
-    <h2>Length Converter</h2>
-
-    <input type="number" id="lengthInput" placeholder="Enter Value">
-
-    <select id="lengthFrom">
-        <option value="meter">Meter</option>
-        <option value="kilometer">Kilometer</option>
-        <option value="centimeter">Centimeter</option>
-        <option value="millimeter">Millimeter</option>
-        <option value="mile">Mile</option>
-        <option value="foot">Foot</option>
-        <option value="inch">Inch</option>
-    </select>
-
-    <select id="lengthTo">
-        <option value="meter">Meter</option>
-        <option value="kilometer">Kilometer</option>
-        <option value="centimeter">Centimeter</option>
-        <option value="millimeter">Millimeter</option>
-        <option value="mile">Mile</option>
-        <option value="foot">Foot</option>
-        <option value="inch">Inch</option>
-    </select>
-
-    <button onclick="convertLength()">Convert</button>
-
-    <h3 id="lengthResult">Result: </h3>
-</div>
 </body>
 </html>
