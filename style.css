@@ -347,3 +347,19 @@ body.light-mode .calculator {
   font-weight: bold;
   margin-top: 12px;
 }
+/* Age Calculator */
+
+#ageCalculator {
+  margin-top: 20px;
+}
+
+#ageCalculator label {
+  display: block;
+  color: white;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+#ageCalculator input {
+  color-scheme: dark;
+}
