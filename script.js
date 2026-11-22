@@ -691,3 +691,27 @@ function convertLength() {
     document.getElementById("lengthResult").innerText =
         "Result: " + Number(result.toFixed(6));
 }
+// Weight Converter
+function convertWeight() {
+    const input = parseFloat(document.getElementById("weightInput").value);
+    const from = document.getElementById("weightFrom").value;
+    const to = document.getElementById("weightTo").value;
+
+    const units = {
+        kg: 1,
+        g: 0.001,
+        mg: 0.000001,
+        lb: 0.45359237,
+        oz: 0.028349523125
+    };
+
+    if (isNaN(input)) {
+        document.getElementById("weightResult").innerText = "Please enter a value";
+        return;
+    }
+
+    const result = input * units[from] / units[to];
+
+    document.getElementById("weightResult").innerText =
+        "Result: " + Number(result.toFixed(6));
+}
