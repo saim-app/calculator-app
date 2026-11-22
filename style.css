@@ -467,3 +467,7 @@ body.light-mode .calculator {
     background: #5148d8;
     transform: scale(1.05);
 }
+/* Space Between Length and Weight Converters */
+.converter-box + .converter-box {
+    margin-top: 30px;
+}
