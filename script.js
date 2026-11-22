@@ -715,3 +715,53 @@ function convertWeight() {
     document.getElementById("weightResult").innerText =
         "Result: " + Number(result.toFixed(6));
 }
+// Currency Converter - Live Exchange Rates
+async function convertCurrency() {
+    const amount = parseFloat(document.getElementById("currencyAmount").value);
+    const from = document.getElementById("currencyFrom").value;
+    const to = document.getElementById("currencyTo").value;
+
+    const resultBox = document.getElementById("currencyResult");
+    const rateBox = document.getElementById("currencyRate");
+
+    if (isNaN(amount) || amount < 0) {
+        resultBox.innerText = "Please enter a valid amount";
+        rateBox.innerText = "";
+        return;
+    }
+
+    resultBox.innerText = "Converting...";
+    rateBox.innerText = "Fetching latest exchange rate...";
+
+    try {
+        const response = await fetch(
+            `https://open.er-api.com/v6/latest/${from}`
+        );
+
+        if (!response.ok) {
+            throw new Error("Network error");
+        }
+
+        const data = await response.json();
+
+        if (data.result !== "success" || !data.rates[to]) {
+            throw new Error("Exchange rate unavailable");
+        }
+
+        const rate = data.rates[to];
+        const result = amount * rate;
+
+        resultBox.innerText =
+            `${amount} ${from} = ${result.toLocaleString(
+                "en-US",
+                { maximumFractionDigits: 4 }
+            )} ${to}`;
+
+        rateBox.innerText =
+            `1 ${from} = ${rate.toLocaleString("en-US")} ${to}`;
+
+    } catch (error) {
+        resultBox.innerText = "Unable to get exchange rates.";
+        rateBox.innerText = "Please check your internet and try again.";
+    }
+}
