@@ -416,3 +416,23 @@ exportHistoryButton.addEventListener("click", function() {
 
   URL.revokeObjectURL(link.href);
 });
+// Percentage Calculator
+
+const percentNumber = document.getElementById("percentNumber");
+const percentValue = document.getElementById("percentValue");
+const calculatePercentage = document.getElementById("calculatePercentage");
+const percentageResult = document.getElementById("percentageResult");
+
+calculatePercentage.addEventListener("click", function() {
+  const number = Number(percentNumber.value);
+  const percentage = Number(percentValue.value);
+
+  if (percentNumber.value === "" || percentValue.value === "") {
+    percentageResult.textContent = "Please enter both numbers";
+    return;
+  }
+
+  const result = (number * percentage) / 100;
+
+  percentageResult.textContent = "Result: " + Number(result.toFixed(8));
+});
