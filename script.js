@@ -375,30 +375,50 @@ copyButton.addEventListener("click", async function () {
         copyButton.textContent = "📋 Copy Result";
     }, 2000);
 });
+
 // Button Sound Feedback
 const buttonSound = new Audio(
   "https://actions.google.com/sounds/v1/cartoon/pop.ogg"
 );
 
+// Sound On / Off Toggle
+const soundToggle = document.getElementById("soundToggle");
+
+let soundEnabled = localStorage.getItem("calculatorSound") !== "off";
+
+buttonSound.muted = !soundEnabled;
+
+function updateSoundButton() {
+  soundToggle.textContent = soundEnabled
+    ? "🔊 Sound On"
+    : "🔇 Sound Off";
+}
+
+updateSoundButton();
+
+soundToggle.addEventListener("click", function() {
+  soundEnabled = !soundEnabled;
+
+  buttonSound.muted = !soundEnabled;
+
+  localStorage.setItem(
+    "calculatorSound",
+    soundEnabled ? "on" : "off"
+  );
+
+  updateSoundButton();
+});
+
+// Play Sound on Calculator Buttons
 buttons.addEventListener("click", function(event) {
   const button = event.target.closest("button");
-  if (!button) return;
+
+  if (!button || !soundEnabled) return;
 
   buttonSound.currentTime = 0;
   buttonSound.play().catch(() => {});
 });
-// Sound On / Off Toggle
-const soundToggle = document.getElementById("soundToggle");
-let soundEnabled = true;
 
-soundToggle.addEventListener("click", function() {
-  soundEnabled = !soundEnabled;
-  buttonSound.muted = !soundEnabled;
-
-  soundToggle.textContent = soundEnabled
-    ? "🔊 Sound On"
-    : "🔇 Sound Off";
-});
 // Export Calculation History
 const exportHistoryButton = document.getElementById("exportHistory");
 
