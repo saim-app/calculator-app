@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="converter-box">
+        <h2>Volume Converter</h2>
+
+        <input type="number" id="volumeInput" placeholder="Enter Volume">
+
+        <select id="volumeFrom">
+            <option value="liter">Liter</option>
+            <option value="ml">Milliliter</option>
+            <option value="m3">Cubic Meter</option>
+            <option value="cm3">Cubic Centimeter</option>
+            <option value="gallon">US Gallon</option>
+            <option value="ft3">Cubic Foot</option>
+        </select>
+
+        <select id="volumeTo">
+            <option value="ml">Milliliter</option>
+            <option value="liter">Liter</option>
+            <option value="m3">Cubic Meter</option>
+            <option value="cm3">Cubic Centimeter</option>
+            <option value="gallon">US Gallon</option>
+            <option value="ft3">Cubic Foot</option>
+        </select>
+
+        <button type="button" onclick="convertVolume()">Convert Volume</button>
+
+        <h3 id="volumeResult">Result: --</h3>
+
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
