@@ -466,3 +466,33 @@ calculateDiscount.addEventListener("click", function() {
   discountAmount.textContent = "Discount: " + Number(saved.toFixed(2));
   finalPrice.textContent = "Final Price: " + Number(total.toFixed(2));
 });
+// Tip Calculator
+
+const billAmount = document.getElementById("billAmount");
+const tipPercent = document.getElementById("tipPercent");
+const calculateTip = document.getElementById("calculateTip");
+const tipAmount = document.getElementById("tipAmount");
+const totalBill = document.getElementById("totalBill");
+
+calculateTip.addEventListener("click", function() {
+  const bill = Number(billAmount.value);
+  const percent = Number(tipPercent.value);
+
+  if (billAmount.value === "" || tipPercent.value === "") {
+    tipAmount.textContent = "Please enter both values";
+    totalBill.textContent = "";
+    return;
+  }
+
+  if (bill < 0 || percent < 0) {
+    tipAmount.textContent = "Please enter valid values";
+    totalBill.textContent = "";
+    return;
+  }
+
+  const tip = (bill * percent) / 100;
+  const total = bill + tip;
+
+  tipAmount.textContent = "Tip: " + Number(tip.toFixed(2));
+  totalBill.textContent = "Total Bill: " + Number(total.toFixed(2));
+});
