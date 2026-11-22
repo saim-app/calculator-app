@@ -363,3 +363,15 @@ body.light-mode .calculator {
 #ageCalculator input {
   color-scheme: dark;
 }
+/* Loan Calculator */
+
+#loanCalculator {
+  margin-top: 20px;
+}
+
+#loanCalculator p {
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 12px;
+}
