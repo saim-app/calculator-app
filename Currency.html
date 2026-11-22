@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="converter-box">
+        <h2>Currency Converter</h2>
+
+        <input type="number" id="currencyAmount" placeholder="Enter Amount">
+
+        <select id="currencyFrom">
+            <option value="PKR">Pakistani Rupee (PKR)</option>
+            <option value="USD">US Dollar (USD)</option>
+            <option value="SAR">Saudi Riyal (SAR)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="AED">UAE Dirham (AED)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+        </select>
+
+        <select id="currencyTo">
+            <option value="USD">US Dollar (USD)</option>
+            <option value="PKR">Pakistani Rupee (PKR)</option>
+            <option value="SAR">Saudi Riyal (SAR)</option>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="GBP">British Pound (GBP)</option>
+            <option value="AED">UAE Dirham (AED)</option>
+            <option value="INR">Indian Rupee (INR)</option>
+        </select>
+
+        <button type="button" onclick="convertCurrency()">Convert</button>
+
+        <h3 id="currencyResult">Result:</h3>
+
+        <p id="currencyRate">Exchange rates will appear here.</p>
+
+        <p><small>Rates are fetched live when available.</small></p>
+
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
