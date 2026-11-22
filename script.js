@@ -795,3 +795,33 @@ function convertArea() {
             maximumFractionDigits: 6
         })} ${to}`;
 }
+
+// Volume Converter
+function convertVolume() {
+    const amount = parseFloat(document.getElementById("volumeInput").value);
+    const from = document.getElementById("volumeFrom").value;
+    const to = document.getElementById("volumeTo").value;
+
+    const resultBox = document.getElementById("volumeResult");
+
+    if (isNaN(amount) || amount < 0) {
+        resultBox.innerText = "Please enter a valid volume";
+        return;
+    }
+
+    const units = {
+        liter: 1,
+        ml: 0.001,
+        m3: 1000,
+        cm3: 0.001,
+        gallon: 3.785411784,
+        ft3: 28.316846592
+    };
+
+    const result = amount * units[from] / units[to];
+
+    resultBox.innerText =
+        `Result: ${result.toLocaleString("en-US", {
+            maximumFractionDigits: 6
+        })} ${to}`;
+}
