@@ -41,5 +41,31 @@
     </div>
 
     <script src="script.js"></script>
+    <!-- Weight Converter -->
+<div class="converter-box">
+    <h2>Weight Converter</h2>
+
+    <input type="number" id="weightInput" placeholder="Enter Weight">
+
+    <select id="weightFrom">
+        <option value="kg">Kilogram</option>
+        <option value="g">Gram</option>
+        <option value="mg">Milligram</option>
+        <option value="lb">Pound</option>
+        <option value="oz">Ounce</option>
+    </select>
+
+    <select id="weightTo">
+        <option value="kg">Kilogram</option>
+        <option value="g">Gram</option>
+        <option value="mg">Milligram</option>
+        <option value="lb">Pound</option>
+        <option value="oz">Ounce</option>
+    </select>
+
+    <button onclick="convertWeight()">Convert</button>
+
+    <h3 id="weightResult">Result:</h3>
+</div>
 </body>
 </html>
