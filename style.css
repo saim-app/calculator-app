@@ -323,3 +323,15 @@ body.light-mode .calculator {
   font-weight: bold;
   margin-top: 12px;
 }
+/* Tip Calculator */
+
+#tipCalculator {
+  margin-top: 20px;
+}
+
+#tipCalculator p {
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 12px;
+}
