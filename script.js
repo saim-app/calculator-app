@@ -190,6 +190,15 @@ function applyScientificFunction(fn) {
 }
 
 function insertPi() {
+  function insertEuler() {
+  const e = String(Math.E);
+
+  if (display.value === "0" || display.value === "Error" || display.value === "") {
+    display.value = e;
+  } else {
+    display.value += e;
+  }
+}
   const pi = String(Math.PI);
 
   if (display.value === "0" || display.value === "Error" || display.value === "") {
@@ -300,6 +309,9 @@ case "tan":
     case "pi":
       insertPi();
       break;
+      case "e":
+  insertEuler();
+  break;
     case "power":
       appendValue("**");
       break;
