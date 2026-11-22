@@ -538,3 +538,46 @@ calculateBMI.addEventListener("click", function() {
   bmiResult.textContent = "BMI: " + bmi.toFixed(1);
   bmiCategory.textContent = "Category: " + category;
 });
+// Age Calculator
+
+const birthDate = document.getElementById("birthDate");
+const calculateAge = document.getElementById("calculateAge");
+const ageResult = document.getElementById("ageResult");
+
+calculateAge.addEventListener("click", function() {
+  if (birthDate.value === "") {
+    ageResult.textContent = "Please select your date of birth";
+    return;
+  }
+
+  const today = new Date();
+  const dob = new Date(birthDate.value + "T00:00:00");
+
+  if (dob > today) {
+    ageResult.textContent = "Date of birth cannot be in the future";
+    return;
+  }
+
+  let years = today.getFullYear() - dob.getFullYear();
+  let months = today.getMonth() - dob.getMonth();
+  let days = today.getDate() - dob.getDate();
+
+  if (days < 0) {
+    months--;
+    const previousMonthDays = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      0
+    ).getDate();
+    days += previousMonthDays;
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  ageResult.textContent =
+    "Your Age: " + years + " Years, " +
+    months + " Months, " + days + " Days";
+});
