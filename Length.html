@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Length Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="converter-box">
+        <h2>Length Converter</h2>
+
+        <input type="number" id="lengthInput" placeholder="Enter Value">
+
+        <select id="lengthFrom">
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="millimeter">Millimeter</option>
+            <option value="mile">Mile</option>
+            <option value="foot">Foot</option>
+            <option value="inch">Inch</option>
+        </select>
+
+        <select id="lengthTo">
+            <option value="meter">Meter</option>
+            <option value="kilometer">Kilometer</option>
+            <option value="centimeter">Centimeter</option>
+            <option value="millimeter">Millimeter</option>
+            <option value="mile">Mile</option>
+            <option value="foot">Foot</option>
+            <option value="inch">Inch</option>
+        </select>
+
+        <button onclick="convertLength()">Convert</button>
+
+        <h3 id="lengthResult">Result:</h3>
+
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
