@@ -311,3 +311,15 @@ body.light-mode .calculator {
   font-weight: bold;
   margin-top: 15px;
 }
+/* Discount Calculator */
+
+#discountCalculator {
+  margin-top: 20px;
+}
+
+#discountCalculator p {
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  margin-top: 12px;
+}
