@@ -40,5 +40,33 @@
     </div>
 
     <script src="script.js"></script>
+    <button id="settingsBtn" class="settings-btn">⚙️ Settings</button>
+
+<div id="settingsPanel" class="settings-panel">
+    <h2>Professional Settings</h2>
+
+    <label>Theme</label>
+    <select id="themeSetting">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+    </select>
+
+    <label>Sound</label>
+    <select id="soundSetting">
+        <option value="on">Sound On</option>
+        <option value="off">Sound Off</option>
+    </select>
+
+    <label>Decimal Places</label>
+    <select id="decimalSetting">
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+    </select>
+
+    <button id="saveSettings">Save Settings</button>
+    <button id="resetSettings">Reset Settings</button>
+</div>
 </body>
 </html>
