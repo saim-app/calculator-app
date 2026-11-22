@@ -188,17 +188,7 @@ function applyScientificFunction(fn) {
 
   replaceCurrentNumber(Number(result.toPrecision(12)));
 }
-
 function insertPi() {
-  function insertEuler() {
-  const e = String(Math.E);
-
-  if (display.value === "0" || display.value === "Error" || display.value === "") {
-    display.value = e;
-  } else {
-    display.value += e;
-  }
-}
   const pi = String(Math.PI);
 
   if (display.value === "0" || display.value === "Error" || display.value === "") {
@@ -208,6 +198,15 @@ function insertPi() {
   }
 }
 
+function insertEuler() {
+  const e = String(Math.E);
+
+  if (display.value === "0" || display.value === "Error" || display.value === "") {
+    display.value = e;
+  } else {
+    display.value += e;
+  }
+}
 function calculateFactorial() {
   const number = getCurrentNumber();
 
