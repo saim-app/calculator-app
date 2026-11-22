@@ -581,3 +581,61 @@ calculateAge.addEventListener("click", function() {
     "Your Age: " + years + " Years, " +
     months + " Months, " + days + " Days";
 });
+// Loan Calculator
+
+const loanAmount = document.getElementById("loanAmount");
+const interestRate = document.getElementById("interestRate");
+const loanYears = document.getElementById("loanYears");
+
+const calculateLoan = document.getElementById("calculateLoan");
+const monthlyPayment = document.getElementById("monthlyPayment");
+const totalPayment = document.getElementById("totalPayment");
+const totalInterest = document.getElementById("totalInterest");
+
+calculateLoan.addEventListener("click", function() {
+  const principal = Number(loanAmount.value);
+  const annualRate = Number(interestRate.value);
+  const years = Number(loanYears.value);
+
+  if (
+    loanAmount.value === "" ||
+    interestRate.value === "" ||
+    loanYears.value === ""
+  ) {
+    monthlyPayment.textContent = "Please enter all values";
+    totalPayment.textContent = "";
+    totalInterest.textContent = "";
+    return;
+  }
+
+  if (principal <= 0 || annualRate < 0 || years <= 0) {
+    monthlyPayment.textContent = "Please enter valid values";
+    totalPayment.textContent = "";
+    totalInterest.textContent = "";
+    return;
+  }
+
+  const monthlyRate = annualRate / 100 / 12;
+  const numberOfPayments = years * 12;
+
+  let monthly;
+
+  if (monthlyRate === 0) {
+    monthly = principal / numberOfPayments;
+  } else {
+    monthly = principal * monthlyRate /
+      (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
+  }
+
+  const total = monthly * numberOfPayments;
+  const interest = total - principal;
+
+  monthlyPayment.textContent =
+    "Monthly Payment: " + monthly.toFixed(2);
+
+  totalPayment.textContent =
+    "Total Payment: " + total.toFixed(2);
+
+  totalInterest.textContent =
+    "Total Interest: " + interest.toFixed(2);
+});
