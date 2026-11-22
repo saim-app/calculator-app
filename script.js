@@ -496,3 +496,45 @@ calculateTip.addEventListener("click", function() {
   tipAmount.textContent = "Tip: " + Number(tip.toFixed(2));
   totalBill.textContent = "Total Bill: " + Number(total.toFixed(2));
 });
+// BMI Calculator
+
+const weightInput = document.getElementById("weight");
+const heightInput = document.getElementById("height");
+const calculateBMI = document.getElementById("calculateBMI");
+const bmiResult = document.getElementById("bmiResult");
+const bmiCategory = document.getElementById("bmiCategory");
+
+calculateBMI.addEventListener("click", function() {
+  const weight = Number(weightInput.value);
+  const height = Number(heightInput.value);
+
+  if (weightInput.value === "" || heightInput.value === "") {
+    bmiResult.textContent = "Please enter weight and height";
+    bmiCategory.textContent = "";
+    return;
+  }
+
+  if (weight <= 0 || height <= 0) {
+    bmiResult.textContent = "Please enter valid values";
+    bmiCategory.textContent = "";
+    return;
+  }
+
+  const heightInMeters = height / 100;
+  const bmi = weight / (heightInMeters * heightInMeters);
+
+  let category = "";
+
+  if (bmi < 18.5) {
+    category = "Underweight";
+  } else if (bmi < 25) {
+    category = "Normal Weight";
+  } else if (bmi < 30) {
+    category = "Overweight";
+  } else {
+    category = "Obesity";
+  }
+
+  bmiResult.textContent = "BMI: " + bmi.toFixed(1);
+  bmiCategory.textContent = "Category: " + category;
+});
