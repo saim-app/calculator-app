@@ -639,3 +639,29 @@ calculateLoan.addEventListener("click", function() {
   totalInterest.textContent =
     "Total Interest: " + interest.toFixed(2);
 });
+// Temperature Converter
+
+const temperatureValue = document.getElementById("temperatureValue");
+const temperatureType = document.getElementById("temperatureType");
+const convertTemperature = document.getElementById("convertTemperature");
+const temperatureResult = document.getElementById("temperatureResult");
+
+convertTemperature.addEventListener("click", function() {
+  if (temperatureValue.value === "") {
+    temperatureResult.textContent = "Please enter temperature";
+    return;
+  }
+
+  const temperature = Number(temperatureValue.value);
+  let result;
+
+  if (temperatureType.value === "CtoF") {
+    result = (temperature * 9 / 5) + 32;
+    temperatureResult.textContent =
+      "Result: " + Number(result.toFixed(2)) + " °F";
+  } else {
+    result = (temperature - 32) * 5 / 9;
+    temperatureResult.textContent =
+      "Result: " + Number(result.toFixed(2)) + " °C";
+  }
+});
