@@ -44,6 +44,35 @@
         <a href="index.html">Back to Home</a>
     </div>
 
+    <!-- Area Converter -->
+    <div class="converter-box">
+        <h2>Area Converter</h2>
+
+        <input type="number" id="areaInput" placeholder="Enter Area">
+
+        <select id="areaFrom">
+            <option value="sqm">Square Meter</option>
+            <option value="sqkm">Square Kilometer</option>
+            <option value="sqft">Square Foot</option>
+            <option value="sqin">Square Inch</option>
+            <option value="acre">Acre</option>
+            <option value="hectare">Hectare</option>
+        </select>
+
+        <select id="areaTo">
+            <option value="sqft">Square Foot</option>
+            <option value="sqm">Square Meter</option>
+            <option value="sqkm">Square Kilometer</option>
+            <option value="sqin">Square Inch</option>
+            <option value="acre">Acre</option>
+            <option value="hectare">Hectare</option>
+        </select>
+
+        <button type="button" onclick="convertArea()">Convert Area</button>
+
+        <h3 id="areaResult">Result: --</h3>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
